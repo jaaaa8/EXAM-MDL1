@@ -13,10 +13,10 @@
     let k;
     do {
         k = parseInt(prompt("Nhập vào 1 số nguyên bất kỳ!"));
-        if (isNaN(n) || !Number.isInteger(n)) {
+        if (isNaN(k) || !Number.isInteger(k)) {
             alert("Hãy nhập giá trị số nguyên!");
         }
-    } while (isNaN(n) || !Number.isInteger(n));
+    } while (isNaN(k) || !Number.isInteger(k));
     document.write(`<br>Số cặp chia hết cho ${k} là ${sumPairDivideKNumber(k, array)} cặp!`);
 
 
