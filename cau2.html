@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu2</title>
+</head>
+<body>
+<script>
+    let n = getValidNumber("Nhập số điểm muốn làm tròn!");
+    document.write(`Số điểm đã nhập là: ${n}`);
+    document.write(`<br>Số điểm sau khi làm tròn: ${roundScore(n)}`);
+
+    function roundScore(score) {
+        let diemLamTron;
+        if (score < 50) {
+            return score;
+        } else {
+            if (score >= 50) {
+                diemLamTron = score % 5;
+                if (5 - diemLamTron < 3) {
+                    score += 5 - diemLamTron;
+                }
+            }
+            return score;
+        }
+    }
+
+    function getValidNumber(message = "Nhập số lượng phần tử của mảng:") {
+        let number;
+        do {
+            number = +prompt(message);
+            if (isNaN(number) || number < 0 || number > 100) {
+                alert("Hãy nhập giá trị hợp lệ trong khoảng 0 - 100!");
+            }
+        } while (isNaN(number) || number < 0 || number > 100);
+        return number;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu1</title>
+</head>
+<body>
+<script>
+    let n;
+    do {
+        n = parseInt(prompt("Nhập độ dài của mảng!"));
+        if (n > 20 || n < 0 || isNaN(n) || !Number.isInteger(n)) {
+            alert("Hãy nhập giá trị số nguyên nhỏ hoặc bằng 20!");
+        }
+    } while (n > 20 || n < 0 || isNaN(n) || !Number.isInteger(n));
+    let array = new Array(n);
+    inputArray(array);
+    outputArray(array);
+    document.write(`<br>Tổng của các số là bội của 3 và 5 là: ${sumFactorOf3And5(array)}`);
+
+
+    function sumFactorOf3And5(arr) {
+        let sum = 0;
+        for (let index = 0; index < arr.length; index++) {
+            if (arr[index] % 3 === 0 && arr[index] % 5 === 0) {
+                sum += arr[index];
+            }
+        }
+        return sum;
+    }
+
+    function inputArray(arr) {
+        let value;
+        for (let i = 0; i < arr.length; i++) {
+            value = +prompt("Nhập vào phần tử thứ " + (i + 1) + " của mảng:");
+            if (isNaN(value) || !Number.isInteger(value)) {
+                alert("Giá trị không hợp lệ. Vui lòng nhập lại.");
+                --i;
+                continue;
+            }
+            arr[i] = value;
+        }
+    }
+
+    function outputArray(arr) {
+        document.write("<br>Mảng có: ");
+        for (let i = 0; i < arr.length; i++) {
+            document.write(arr[i] + " ");
+        }
+    }
+</script>
+</body>
+</html>

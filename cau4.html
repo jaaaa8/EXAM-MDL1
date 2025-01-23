@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu4</title>
+    <style>
+        table{
+            border-collapse: collapse;
+            border: 1px solid white;
+            width: 95%;
+            padding: 10px;
+            background-color: lavender;
+            border-radius: 15px;
+        }
+        form{
+            padding: 30px;
+        }
+        th, td{
+            padding: 15px;
+        }
+        .inputGroup{
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<h2 align="center">QUẢN LÍ KHÁCH HÀNG</h2>
+<form action="" id="customerForm" onsubmit="saveCustomer(); return false;">
+    <div class="inputGroup">
+        <label for="id">ID khách hàng: </label>
+        <input name="id" id="id" required>
+    </div>
+    <div class="inputGroup">
+        <label for="name">Tên khách hàng: </label>
+        <input type="text" name="name" id="name" required>
+    </div>
+    <div class="inputGroup">
+        <label for="phone">SDT: </label>
+        <input type="number" name="phone" id="phone" required>
+    </div>
+    <div class="inputGroup">
+        <label for="address">Địa chỉ: </label>
+        <input name="address" id="address" required>
+    </div>
+    <div class="inputGroup">
+        <label for="email">Email: </label>
+        <input name="email" id="email" required>
+    </div>
+    <div class="inputGroup">
+        <button type="submit">Thêm mới</button>
+    </div>
+</form>
+<br>
+<table border="1" align="center">
+    <thead>
+    <tr bgcolor="#a9a9a9">
+        <th>ID</th>
+        <th>Tên</th>
+        <th>SDT</th>
+        <th>Địa chỉ</th>
+        <th>Email</th>
+    </tr>
+    </thead>
+    <tbody id="tableData"></tbody>
+</table>
+<script>
+    class Customer {
+        constructor(customerID,name,phone,address,email) {
+            this.customerID = customerID;
+            this.name = name;
+            this.address = address;
+            this.phone = phone;
+            this.email = email;
+        }
+    }
+    let customer1 = new Customer("56V","Trần Phước Trí đẹp trai",934835751, "Hoà Xuân","bileyghas1eye@gmail.com");
+    let customer2 = new Customer("32U","Jennifer Lawrence",312131231,"USA","jenniferlawrence@gmail.com");
+    let customer3 = new Customer("78J","Naruto Uzumaki", 45678765,"Japan","narutozumaki@gmail.com");
+    let customerList = [customer1,customer2,customer3];
+    displayCustomer();
+
+
+    function displayCustomer() {
+        const tableData = document.getElementById("tableData");
+        let data = '';
+        for (let i = 0; i < customerList.length; i++) {
+            data += `<tr>
+        <td align="center">${customerList[i].customerID}</td>
+        <td align="center">${customerList[i].name}</td>
+        <td align="center">${customerList[i].phone}</td>
+        <td align="center">${customerList[i].address}</td>
+        <td align="center">${customerList[i].email}</td>
+         </tr>`;
+        }
+        tableData.innerHTML = data;
+    }
+    function saveCustomer() {
+        const name = document.getElementById("name").value;
+        const id = document.getElementById("id").value;
+        const phone = parseInt(document.getElementById("phone").value);
+        const email = document.getElementById("email").value;
+        const address = document.getElementById("address").value;
+        let newCustomer = new Customer(id, name, phone, address,email);
+        customerList.push(newCustomer);
+        displayCustomer();
+        document.getElementById("customerForm").reset();
+    }
+</script>
+</body>
+</html>

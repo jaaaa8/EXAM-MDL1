@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu3</title>
+</head>
+<body>
+<script>
+    let n = getValidNumber();
+    let array = new Array(n);
+    inputArray(array);
+    outputArray(array);
+    let k;
+    do {
+        k = parseInt(prompt("Nhập vào 1 số nguyên bất kỳ!"));
+        if (isNaN(n) || !Number.isInteger(n)) {
+            alert("Hãy nhập giá trị số nguyên!");
+        }
+    } while (isNaN(n) || !Number.isInteger(n));
+    document.write(`<br>Số cặp chia hết cho ${k} là ${sumPairDivideKNumber(k, array)} cặp!`);
+
+
+    function sumPairDivideKNumber(k, arr) {
+        let count = 0;
+        for (let i = 0; i < arr.length - 1; i++) {
+            for (let j = i + 1; j < arr.length; j++) {
+                if ((arr[i] + arr[j]) % k === 0) {
+                    ++count;
+                }
+            }
+        }
+        return count;
+    }
+
+    function getValidNumber(message = "Nhập số lượng phần tử của mảng:") {
+        let number;
+        do {
+            number = +prompt(message);
+            if (isNaN(number) || number > 50) {
+                alert("Hãy nhập giá trị hợp lệ!");
+            }
+        } while (isNaN(number) || number > 50);
+        return number;
+    }
+
+    function inputArray(arr) {
+        let value;
+        for (let i = 0; i < arr.length; i++) {
+            value = +prompt("Nhập vào phần tử thứ " + (i + 1) + " của mảng:");
+            if (isNaN(value) || !Number.isInteger(value)) {
+                alert("Giá trị không hợp lệ. Vui lòng nhập lại.");
+                --i;
+                continue;
+            }
+            arr[i] = value;
+        }
+    }
+
+    function outputArray(arr) {
+        document.write("<br>Mảng có: ");
+        for (let i = 0; i < arr.length; i++) {
+            document.write(arr[i] + " ");
+        }
+    }
+
+
+</script>
+</body>
+</html>
